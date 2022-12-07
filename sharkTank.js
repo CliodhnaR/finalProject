@@ -282,19 +282,19 @@ http.createServer(function (req, res)
                         let min = 0;
                         if(population == "huge"){
                             max = "999999";
-                            min = "30000";
+                            min = "31111";
                         }
                         else if(population == "large"){
-                            max = "30000";
-                            min = "15000";
+                            max = "31111";
+                            min = "15111";
                         }
                         else if(population == "medium"){
-                            max = "15000";
-                            min = "5000";
+                            max = "15111";
+                            min = "5111";
                         }
                         else if(population == "small"){
-                            max = "5000";
-                            min = "0";
+                            max = "5111";
+                            min = "1";
                         }
                         var tempPop = {allUndergrad: {$gt: min, $lt: max}};
                         wrapper["$and"].push(tempPop);
