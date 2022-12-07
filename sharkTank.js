@@ -278,8 +278,8 @@ http.createServer(function (req, res)
                         wrapper["$and"].push(majWomen);
                     }
                     else if(item == population){
-                        let max = "0";
-                        let min = "0";
+                        let max = 0;
+                        let min = 0;
                         if(population == "huge"){
                             max = "999999";
                             min = "30000";
