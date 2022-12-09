@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<style>
+.center-block{
+  margin-left: auto; 
+  margin-right: auto; 
+  display: block;
+}
+
+.button1{
+  margin: auto;
+  width: 30%;
+  text-align: center; 
+  font: Arial, Helvetica, sans-serif;
+  padding-top: 5px; 
+  padding-bottom: 5px;
+  display: block;
+  
+}
+</style>
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <div class="title-image">
+    <div class="title-text">
+    <h1 style="font-size:50px">CollegeFinder</h1>
+    <h2> Find your best college match </h2> 
+  </div>
+    
+  </div>
+      <div class="topnav">
+    <a href= "index.html">Home</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="counselors.html">Counselors</a> 
+    <a class="active" href="#booking">Booking an Appointment</a>
+  </div>
+  <div style="padding-left:16px">
+  </div>
+ <div class="flex-container"></div><br>
+  
+<form onsubmit="return validate()" name = "myForm">
+  <h2>Book an appointment</h2>
+  <img src="booking.jpg" width="150" height="100" class="center"> 
+  <div style = "font-weight:bold; text-align: center">with one of our nationally renowned college counselors for personalized expert help</div>
+<br>
+<br>
+  <p class="center-block"><label>First Name:</label> <input type="text"  name='fname' /></p>
+<p class="center-block"><label>Last Name:</label>  <input type="text"  name='lname' /></p>
+<p class="center-block"><label>Phone:</label> <input type="text"  name='phone' /></p>
+<p class="center-block"><label>Email:</label> <input type="text" name='email' /></p>
+<p class="center-block"><label>High School Graduation Date:</label> <input type="text" name='graddate' /></p>
+<p class="center-block"><label>GPA:</label> <input type="text" name='GPA' /></p>
+  <p class="center-block"><label>Goals for College Counselor: </label><input type="text" name='goals' /></p>
+  <br>
+   <select class="button1" name="sList" id="selection">
+        <option>College Counselor Prefere
+        <option>Dylan Lincoln</option>
+        <option>John Martens</option>
+        <option>Rachel Rivers</option>
+    </select>    
+  <br> 
+   <div style = "text-align: center" >
+  <button class="button">Submit!</button>
+</div>
+    <div class="footer">
+		<div class = "foot_left">
+			<p>Hours of operation: 9:00am - 5:00pm</p>
+			<p>Phone: (555)-555-5555</p>
+			<p>Email: support@collegefinder.com</p>
+		</div>
+		<div class = "foot_right">
+			<a class = "footHome" href="index.html">CollegeFinder</a>
+		</div>
+	</div>
+<p> 
+</form> 
+
+<script src="clairescript.js"></script>
+  
+</body>
+
+</html>

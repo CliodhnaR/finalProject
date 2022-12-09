@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>College Finder</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+<style> 
+
+.container {
+  position: relative;
+}
+
+.text-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: darkcyan; opacity: 0.8; 
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+
+.block {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  image: url("homepage.jpg");
+}
+.container  {
+  text-align: center;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  text-align: center; 
+  background-color: white; 
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.header{
+    text-align: center;
+}
+
+.mission{
+    text-align: center; 
+    overflow-wrap: break-word;
+    padding-left: 40px;
+    padding-right: 40px; 
+}
+
+.column_s {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+
+
+.row_s:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.button {
+  border: none;
+  color: darkcyan;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: darkcyan; 
+  color: white; 
+  border: 2px solid grey;
+}
+
+.button:hover {
+  background-color: white;
+  color: white;
+}
+
+.services{
+  background-color: white; 
+  padding: 20px; 
+  text-align: center; 
+}
+
+
+.img_container{
+        text-align: center;
+      }
+          
+</style> 
+</head>
+
+<body>
+  <div class="title-image">
+    <div class="title-text">
+    <h1 style="font-size:50px">CollegeFinder</h1>
+    <h2> Find your best college match </h2> 
+  </div>
+    
+  </div>
+      <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="counselors.html">Counselors</a> 
+    <a href="booking.html">Book an Appointment</a>
+  </div>
+  <div style="padding-left:16px">
+  </div>
+  <br>
+   <div class="flex-container" width="350" height="400" >
+     CollegeFinder helps provide a convenient, effective service to guide prospective college students <br> through choosing the best fit college possible. 
+   </div>
+<br> <br> 
+  <div>
+    <img src="college3.jpg" width="150" height="100" class="center"> 
+   </div>
+   <div style = "text-align: center">
+     <button class="button" onclick = "window.location.href='quiz.html'" style = "text-align: center">Take our quiz here!</button>
+  </div>
+  <br>
+        <div class="row">
+       <div class="flex-container" class="column">
+    <div style="text-align: left"><img src="college.jpg" alt="college" width="350" height="250" border= 1px class="responsive" solid #333></div>
+       </div>
+    <div class="flex-container" class="column">
+  <div style="text-align: right"><img src="collegeapplication.jpg" alt="denim shorts" width="350" height="250" border= 1px class="responsive" solid #333></div>  
+   </div>
+    </div> 
+  <div class="row">
+    <div class = "column">
+  <meta charset="utf-8" />
+  <a data-type="countdown" data-name="Decision Day:" data-bg_color="#FFFFFF" data-name_color="#008922"
+    data-border_color="#888888" data-dt="2023-05-01 12:00:00" data-timezone="America/New_York"
+    style="display: block; width: 50%; position: relative; padding-bottom: 15%; margin: auto;" class="tickcounter"
+    href="//dev9.pythonanywhere.com">Countdown</a>
+  <script>(function (d, s, id) {var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//dev9.pythonanywhere.com/static/js/loader.js"; pjs.parentNode.insertBefore(js, pjs);}(document, "script", "tickcounter-sdk"));</script>
+    </div>
+    <div class = "column">
+ <meta charset="utf-8" />
+  <a data-type="countdown" data-name="Regular Admission Applications Due:" data-bg_color="#FFFFFF" data-name_color="#008922"
+    data-border_color="#888888" data-dt="2023-01-01 12:00:00" data-timezone="America/New_York"
+    style="display: block; width: 50%; position: relative; padding-bottom: 15%; margin: auto;" class="tickcounter"
+    href="//dev9.pythonanywhere.com">Countdown</a>
+  <script>(function (d, s, id) {var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//dev9.pythonanywhere.com/static/js/loader.js"; pjs.parentNode.insertBefore(js, pjs);}(document, "script", "tickcounter-sdk"));</script>
+</div>
+</div>
+  <div class="footer">
+		<div class = "foot_left">
+			<p>Hours of operation: 9:00am - 5:00pm</p>
+			<p>Phone: (555)-555-5555</p>
+			<p>Email: support@collegefinder.com</p>
+		</div>
+		<div class = "foot_right">
+			<a class = "footHome" href="index.html">CollegeFinder</a>
+		</div>
+	</div>
+</body>
+  
+
+</html>
