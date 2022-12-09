@@ -339,7 +339,7 @@ http.createServer(function (req, res)
                                  '<a class = "footHome" href="index.html">CollegeFinder</a> </div></div> </body> </html> '
 
 				// reload page
-				file = 'finalProjIdx.html';
+				file = 'quiz.html';
 				fs.readFile(file, function(err, txt) {
 					res.writeHead(200, {'Content-Type': 'text/html'});
 					res.write(txt);
