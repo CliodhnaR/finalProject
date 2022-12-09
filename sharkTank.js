@@ -14,7 +14,7 @@ http.createServer(function (req, res)
 
 		  let tempString = '<div id="result"></div> </body> </html>'
 
-		  file = 'finalProjIdx.html';
+		  file = 'quiz.html';
 		  fs.readFile(file, function(err, txt) {
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(txt);
