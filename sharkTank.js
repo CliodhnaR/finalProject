@@ -37,10 +37,8 @@ http.createServer(function (req, res)
 				// connect to client + open collection
 				await client.connect();
 				var dbo = client.db('universitiesData');
-				var collection = dbo.collection('universities');
-				
-				// set inital response (if there is not match)
-				// let toPrint = "<br/>No matches found! Please try again.";
+				var collection = dbo.collection('allUniversitiesFinal');
+
 
 				// get input from URL
 				var qobj = url.parse(req.url, true).query;
@@ -52,7 +50,6 @@ http.createServer(function (req, res)
                 let satMath = params.get('satMath');
                 let satEng = params.get('satEng');
                 let library = params.get('library');
-                let women = params.get('women');
                 let major = params.get('major');
                 let population = params.get('population');
 
@@ -69,39 +66,39 @@ http.createServer(function (req, res)
                     index--;
                 }
          
-                // create wrapper for all answers
+                // create a QBE query with an array for all of the answers
                 var wrapper = {"$and": []};
 
                 // loop through choices and add all requested choices to wrapper
                 for await(const item of allChoices){
                     if(item == location){
-                        let gtLong = "0";
-                        let ltLong = "0";
-                        let gtLat = "0";
-                        let ltLat = "0";
+                        let gtLong = 0;
+                        let ltLong = 0;
+                        let gtLat = 0;
+                        let ltLat = 0;
                         if(location == "Northeast"){
-                            gtLat = "37";
-                            ltLat = "50";
-                            gtLong = "-85";
-                            ltLong = "-60";
+                            gtLat = 37;
+                            ltLat = 50;
+                            gtLong = -85;
+                            ltLong = -60;
                         }
                         else if(location == "South"){
-                            gtLat = "0";
-                            ltLat = "37";
-                            gtLong = "-105";
-                            ltLong = "-70";
+                            gtLat = 0;
+                            ltLat = 37;
+                            gtLong = -105;
+                            ltLong = -70;
                         }
                         else if(location == "Midwest"){
-                            gtLat = "35";
-                            ltLat = "50";
-                            gtLong = "-115";
-                            ltLong = "-90";
+                            gtLat = 35;
+                            ltLat = 50;
+                            gtLong = -115;
+                            ltLong = -90;
                         }
                         else if(location == "West"){
-                            gtLat = "30";
-                            ltLat = "50";
-                            gtLong = "-130";
-                            ltLong = "-112";
+                            gtLat = 30;
+                            ltLat = 50;
+                            gtLong = -130;
+                            ltLong = -112;
                         }
                         var tempLat = {latitude: {$gt: gtLat, $lt: ltLat}};
                         var tempLong = {longitude: {$gt: gtLong, $lt: ltLong}};
@@ -112,28 +109,28 @@ http.createServer(function (req, res)
                         let max = 0;
                         let min = 0;
                         if(tuition == "seventy"){
-                            min = "70000";
-                            max = "99999999";
+                            min = 70000;
+                            max = 99999999;
                         }
                         else if(tuition == "fifty"){
-                            max = "70000";
-                            min = "50000";
+                            max = 70000;
+                            min = 50000;
                         }
                         else if(tuition == "thirty"){
-                            max = "50000";
-                            min = "30000";
+                            max = 50000;
+                            min = 30000;
                         }
                         else if(tuition == "ten"){
-                            max = "30000";
-                            min = "10000";
+                            max = 30000;
+                            min = 10000;
                         }
                         else if(tuition == "seven"){
-                            max = "10000";
-                            min = "7000";
+                            max = 10000;
+                            min = 7000;
                         }
                         else if(tuition == "lessThan"){
-                            max = "7000";
-                            min = "0";
+                            max = 7000;
+                            min = 0;
                         }
                         var tempPrice = {outState: {$gt: min, $lt: max}};
                         wrapper["$and"].push(tempPrice);
@@ -142,84 +139,84 @@ http.createServer(function (req, res)
                         let max = 0;
                         let min = 0;
                         if(act == "oneA"){
-                            max = "37";
-                            min = "32";
+                            max = 37;
+                            min = 32;
                         }
                         else if(act == "twoA"){
-                            max = "33";
-                            min = "28";
+                            max = 33;
+                            min = 28;
                         }
                         else if(act == "threeA"){
-                            max = "29";
-                            min = "24";
+                            max = 29;
+                            min = 24;
                         }
                         else if(act == "fourA"){
-                            max = "25";
-                            min = "20";
+                            max = 25;
+                            min = 20;
                         }
                         else if(act == "fiveA"){
-                            max = "21";
-                            min = "18";
+                            max = 21;
+                            min = 18;
                         }
                         else if(act == "sixA"){
-                            max = "17";
-                            min = "0";
+                            max = 17;
+                            min = 0;
                         }
                         var tempACT = {ACTcomp21: {$gt: min, $lt: max}};
                         wrapper["$and"].push(tempACT);
                     }
                     else if(item == satMath){
                         if(satMath == "oneSM"){
-                            max = "801";
-                            min = "739";
+                            max = 801;
+                            min = 739;
                         }
                         else if(satMath == "twoSM"){
-                            max = "740";
-                            min = "659";
+                            max = 740;
+                            min = 659;
                         }
                         else if(satMath == "threeSM"){
-                            max = "660";
-                            min = "579";
+                            max = 660;
+                            min = 579;
                         }
                         else if(satMath == "fourSM"){
-                            max = "580";
-                            min = "499";
+                            max = 580;
+                            min = 499;
                         }
                         else if(satMath == "fiveSM"){
-                            max = "500";
-                            min = "439";
+                            max = 500;
+                            min = 439;
                         }
                         else if(satMath == "sixSM"){
-                            max = "440";
-                            min = "0";
+                            max = 440;
+                            min = 0;
                         }
                         var tempSAT = {SATmath21: {$gt: min, $lt: max}};
                         wrapper["$and"].push(tempSAT);
                     }
                     else if(item == satEng){
                         if(satEng == "oneSE"){
-                            max = "801";
-                            min = "739";
+                            max = 801;
+                            min = 739;
                         }
                         else if(satEng == "twoSE"){
-                            max = "740";
-                            min = "659";
+                            max = 740;
+                            min = 659;
                         }
                         else if(satEng == "threeSE"){
-                            max = "660";
-                            min = "579";
+                            max = 660;
+                            min = 579;
                         }
                         else if(satEng == "fourSE"){
-                            max = "580";
-                            min = "499";
+                            max = 580;
+                            min = 499;
                         }
                         else if(satEng == "fiveSE"){
-                            max = "500";
-                            min = "439";
+                            max = 500;
+                            min = 439;
                         }
                         else if(satEng == "sixSE"){
-                            max = "440";
-                            min = "0";
+                            max = 440;
+                            min = 0;
                         }
                         var tempSAT = {SATread21: {$gt: min, $lt: max}};
                         wrapper["$and"].push(tempSAT);
@@ -239,40 +236,40 @@ http.createServer(function (req, res)
                         var majMen;
                         var majWomen;
                         if(major == "edu"){
-                            majMen = {educationMen: {$gt: "0"}};
-                            majWomen = {educationWomen: {$gt: "0"}};
+                            majMen = {educationMen: {$gt: 0}};
+                            majWomen = {educationWomen: {$gt: 0}};
                         }
                         else if(major == "eng"){
-                            majMen = {engineeringMen: {$gt: "0"}};
-                            majWomen = {engineeringWomen: {$gt: "0"}};
+                            majMen = {engineeringMen: {$gt: 0}};
+                            majWomen = {engineeringWomen: {$gt: 0}};
                         }
                         else if(major == "bio"){
-                            majMen = {bioMen: {$gt: "0"}};
-                            majWomen = {bioWomen: {$gt: "0"}};
+                            majMen = {bioMen: {$gt: 0}};
+                            majWomen = {bioWomen: {$gt: 0}};
                         }
                         else if(major == "math"){
-                            majMen = {mathMen: {$gt: "0"}};
-                            majWomen = {mathWomen: {$gt: "0"}};
+                            majMen = {mathMen: {$gt: 0}};
+                            majWomen = {mathWomen: {$gt: 0}};
                         }
                         else if(major == "science"){
-                            majMen = {sciMen: {$gt: "0"}};
-                            majWomen = {sciWomen: {$gt: "0"}};
+                            majMen = {sciMen: {$gt: 0}};
+                            majWomen = {sciWomen: {$gt: 0}};
                         }
                         else if(major == "business"){
-                            majMen = {busiMen: {$gt: "0"}};
-                            majWomen = {busiWomen: {$gt: "0"}};
+                            majMen = {busiMen: {$gt: 0}};
+                            majWomen = {busiWomen: {$gt: 0}};
                         }
                         else if(major == "law"){
-                            majMen = {lawMen: {$gt: "0"}};
-                            majWomen = {lawWomen: {$gt: "0"}};
+                            majMen = {lawMen: {$gt: 0}};
+                            majWomen = {lawWomen: {$gt: 0}};
                         }
                         else if(major == "dentist"){
-                            majMen = {dentistMen: {$gt: "0"}};
-                            majWomen = {dentistWomen: {$gt: "0"}};
+                            majMen = {dentistMen: {$gt: 0}};
+                            majWomen = {dentistWomen: {$gt: 0}};
                         }
                         else if(major == "medicine"){
-                            majMen = {medicineMen: {$gt: "0"}};
-                            majWomen = {medicineWomen: {$gt: "0"}};
+                            majMen = {medicineMen: {$gt: 0}};
+                            majWomen = {medicineWomen: {$gt: 0}};
                         }
                         wrapper["$and"].push(majMen);
                         wrapper["$and"].push(majWomen);
@@ -281,20 +278,20 @@ http.createServer(function (req, res)
                         let max = 0;
                         let min = 0;
                         if(population == "huge"){
-                            max = "999999";
-                            min = "31111";
+                            max = 999999;
+                            min = 30000;
                         }
                         else if(population == "large"){
-                            max = "31111";
-                            min = "15111";
+                            max = 30000;
+                            min = 15000;
                         }
                         else if(population == "medium"){
-                            max = "15111";
-                            min = "5111";
+                            max = 15000;
+                            min = 5000;
                         }
                         else if(population == "small"){
-                            max = "5111";
-                            min = "1";
+                            max = 5000;
+                            min = 0;
                         }
                         var tempPop = {allUndergrad: {$gt: min, $lt: max}};
                         wrapper["$and"].push(tempPop);
@@ -302,18 +299,44 @@ http.createServer(function (req, res)
                 }
 
                 var toPrint = "";
-                let test = collection.find(wrapper);
-                await test.forEach(function(item){
-                    if(item.ACTcomp21 != "" && item.SATread21 != "" && item.SATmath21 != "" && item.allUndergrad != "" && item.city != "" && item.outState != "" ){
-                        toPrint += item.name + ": <ul><li>Average ACT Score: " + item.ACTcomp21 + "</li><li>Average SAT Math Score: " + item.SATmath21 +
-                            "</li><li>Average SAT Reading Score: " + item.SATread21 + "</li><li>Out of State Tuition: $" + item.outState +
-                            "</li><li>Undergraduate population: " + item.allUndergrad + "</li><li>City: " + item.city +
-                            "</li><li>Mission statement: " + item.mission + " <a href='" + item.missionURL + "'>" + item.missionURL + "</a> </li></ul><br/>"
+
+                let allData = collection.find(wrapper);
+
+                await allData.forEach(function(item){
+                    // check that numbers exist
+                    let allResponses = [item.ACTcomp21, item.SATmath21, item.SATread21, item.allUndergrad];
+                    for(let i = 0; i < allResponses.length; i++){
+                        if(isNaN(allResponses[i])){
+                            allResponses[i] = "Not available.";
+                        }
                     }
+                    // check tuition, add dollar sign if needed
+                    let tuition = "Not available."
+                    if(!(isNaN(item.outState))){
+                        tuition = "$" + item.outState;
+                    }
+                    // check if mission exisits, replace with URL if possible
+                    let mission = "Not available."
+                    if(item.mission != ""){
+                        mission = item.mission;
+                    }
+                    else {
+                        if(item.missionURL != ""){
+                            mission = "<a href='" + item.missionURL + "'>" + item.missionURL + "</a>";
+                        }
+                    }
+                    // print data
+                    toPrint += item.name + ": <ul><li>Average ACT Score: " + allResponses[0] + "</li><li>Average SAT Math Score: " + allResponses[1] +
+                        "</li><li>Average SAT Reading Score: " + allResponses[2] + "</li><li>Out of State Tuition: " + tuition +
+                        "</li><li>Undergraduate population: " + allResponses[3] + "</li><li>City: " + item.city +
+                        "</li><li>Mission statement: " + mission + " </li></ul><br/>"
                 });
                 
 				// change result
-				let tempString = '<br/><div id="result">'+ toPrint +'</div> </body> </html>'
+				let tempString = '<br/><div id="result">'+ toPrint +'</div> <div class="footer">' +
+                                 '<div class = "foot_left"> <p>Hours of operation: 9:00am - 5:00pm</p> <p>Phone: (555)-555-5555</p>' +
+                                 '<p>Email: support@collegefinder.com</p> </div> <div class = "foot_right">' +
+                                 '<a class = "footHome" href="index.html">CollegeFinder</a> </div></div> </body> </html> '
 
 				// reload page
 				file = 'finalProjIdx.html';
